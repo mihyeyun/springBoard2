@@ -23,7 +23,7 @@ public class DataSourceTests {
 	private DataSource ds;	//주입했으므로 객체임
 	
 	@Autowired
-	private SqlSessionFactory sqlSessionFactory; 
+	private SqlSessionFactory sqlSessionFactory;
 	
 	@Test
 	public void testConnection() {
