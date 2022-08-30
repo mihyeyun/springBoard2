@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cloud.domain.BoardVO;
 import com.cloud.service.BoardService;
 
-import oracle.jdbc.proxy.annotation.Post;
 
 @RequestMapping("/board/*")		//localhost:8080/board/aaa
 @Controller
 public class BoardController {
+
 	
 	@Autowired
 	private BoardService service;

@@ -25,7 +25,7 @@
 		UPDATE tbl_board SET title = #{title}, content = #{content} WHERE bno = #{bno}
 	</update>
 	
-	<update id="updateCount" parameterType="int">
+	<update id="updateCount">
 		UPDATE tbl_board SET cnt = cnt + 1 WHERE bno = #{bno}
 	</update>
 </mapper>
