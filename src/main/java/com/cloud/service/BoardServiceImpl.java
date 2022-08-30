@@ -38,4 +38,16 @@ public class BoardServiceImpl implements BoardService{
 		mapper.deleteBoard(vo);
 	}
 
+
+	@Override
+	public void update(BoardVO vo) {		//글 수정
+		mapper.updateBoard(vo);
+	}
+
+
+	@Override
+	public void updateCount(int bno) {		//조회수
+		mapper.updateCount(bno);
+	}
+
 }

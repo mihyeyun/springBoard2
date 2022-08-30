@@ -14,4 +14,10 @@ public interface BoardMapper {
 	public BoardVO getBoard(int bno);		//글 상세 보기
 	
 	public void deleteBoard(BoardVO vo);	//글 삭제
+	
+	public void updateBoard(BoardVO vo);	//글 삭제
+	
+	public void updateCount(int bno);	//조회수 
+
+
 }

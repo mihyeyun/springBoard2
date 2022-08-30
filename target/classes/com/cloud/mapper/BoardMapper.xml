@@ -20,4 +20,12 @@
 	<delete id="deleteBoard">
 		DELETE FROM tbl_board WHERE bno = #{bno}
 	</delete>
+	
+	<update id="updateBoard">
+		UPDATE tbl_board SET title = #{title}, content = #{content} WHERE bno = #{bno}
+	</update>
+	
+	<update id="updateCount" parameterType="int">
+		UPDATE tbl_board SET cnt = cnt + 1 WHERE bno = #{bno}
+	</update>
 </mapper>
