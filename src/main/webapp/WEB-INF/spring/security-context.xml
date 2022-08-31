@@ -9,7 +9,12 @@
 		  class="com.cloud.security.CustomAccessDeniedHandler" />
 	<bean id="customLoginSuccess" 
 		  class="com.cloud.security.CustomLoginSuccessHandler" />
-	<bean id="customPasswordEncoder" class="com.cloud.security.CustomNoOpPasswordEncoder" />
+	<!-- <bean id="customPasswordEncoder" 
+		  class="com.cloud.security.CustomNoOpPasswordEncoder" /> -->
+	<!-- 패스워드 암호화 빈 등록 -->
+	<bean id="bCryptPasswordEncoder" 
+		  class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="customUserDetailsServie" class="com.cloud.security.CustomUserDetailsServie"></bean>
 
 	<!-- 기본 서비스 -->
 	<security:http>
@@ -31,9 +36,17 @@
 	
 	<!-- 인증 및 권한 설정 -->
 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource"/>
-			<security:password-encoder ref="customPasswordEncoder" />
+		<security:authentication-provider
+		user-service-ref="customUserDetailsServie">
+		<!-- <security:jdbc-user-service data-source-ref="dataSource"/> -->
+		<!-- <security:jdbc-user-service 
+			data-source-ref="dataSource"
+			users-by-username-query="select userid, userpw, enabled from tbl_member where userid=?"
+			authorities-by-username-query="select userid, auth from tbl_member_auth where userid=?"
+		/> -->
+			<security:password-encoder ref="bCryptPasswordEncoder"  />
+			
+			<!-- <security:password-encoder ref="customPasswordEncoder" /> -->
 			<!-- <security:user-service>
 				<security:user name="member" password="{noop}member"
 					authorities="ROLE_MEMBER"/>

@@ -18,7 +18,7 @@
 	
 	<!-- dataSource 빈 등록 - 생성자 주입 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
-	      destroy-method="close">
+	      destroy-method="close" >
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 	
