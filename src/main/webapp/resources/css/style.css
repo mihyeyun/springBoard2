@@ -37,3 +37,10 @@ a{text-decoration: none;}
 .tbl_login input{width: 200px; height: 30px; border: 1px solid #aaa; border-radius: 2px}
 .tbl_login input[type="submit"], input[type="reset"]{width: 60px; height: 30px;}
 #login .error{color:#f00; margin-top: 10px}
+
+/* signup Ω∫≈∏¿œ */
+.tbl_signup{margin: 20px auto; width: 360px;}
+.tbl_signup, td{border: 1px solid #ccc; border-collapse: collapse; padding: 10px}
+.tbl_signup input{width: 200px; height: 30px; border: 1px solid #aaa; border-radius: 2px}
+.tbl_signup input[type="submit"], input[type="reset"]{width: 60px; height: 30px;}
+.tbl_signup td:nth-child(1) {width: 120px}

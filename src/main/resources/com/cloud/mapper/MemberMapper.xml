@@ -8,9 +8,9 @@
 		<id property="userid" column="userid" />
 		<result property="userid" column="userid" />
 		<result property="userpw" column="userpw" />
-		<result property="userName" column="userName" />
-		<result property="regDate" column="regDate" />
-		<result property="updateDate" column="updateDate" />
+		<result property="username" column="username" />
+		<result property="regDate" column="regdate" />
+		<result property="updateDate" column="updatedate" />
 		<collection property="authList" resultMap="authMap" />
 	</resultMap>
 	
@@ -27,4 +27,10 @@
    			ON mem.userid = auth.userid
 		WHERE mem.userid = #{userid}
 	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="insertMember">
+		INSERT INTO tbl_member(userid, userpw, username, enabled)
+		VALUES (#{userid}, #{userpw}, #{username}, '1')
+	</insert>
 </mapper>

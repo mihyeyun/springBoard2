@@ -1,8 +1,14 @@
 package com.cloud.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cloud.domain.BoardVO;
 import com.cloud.service.BoardService;
 
+import lombok.Data;
 
 @RequestMapping("/board/*")		//localhost:8080/board/aaa
 @Controller
@@ -30,14 +37,16 @@ public class BoardController {
 	}
 	
 	//글쓰기 폼 페이지 요청
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/insertBoard")
 	public String insertBoard() {
 		return "/board/insertBoard";
 	}
 	
 	//글쓰기 처리 요청
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/insertBoard")
-	public String insert(BoardVO vo) {
+	public String insert(BoardVO vo) throws UnsupportedEncodingException {
 		service.insert(vo);
 		return "redirect:/board/boardList";
 	}
